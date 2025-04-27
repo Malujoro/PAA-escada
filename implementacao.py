@@ -22,9 +22,9 @@ def escada_dinamica(n: int) -> int:
 def linha(char: str = "=", tam: int = 70):
     print(char * tam)
 
-with open("tempos_escada.csv", mode="w", newline="") as arquivoCSV:
+with open("tempos_escada2.csv", mode="w", newline="") as arquivoCSV:
     writer = csv.writer(arquivoCSV)
-    writer.writerow(["degrau", "algoritmo", "iteracao", "tempo", "memoria_b", "memoria_pico_b"])
+    writer.writerow(["degrau", "algoritmo", "iteracao", "tempo", "memoria_pico_b"])
 
     iteracoes = 30
     lista_degraus = [10, 40]
@@ -45,7 +45,7 @@ with open("tempos_escada.csv", mode="w", newline="") as arquivoCSV:
 
                 tempo = fim - inicio
 
-                print(f"[{it+1}ª Iteração] {tempo:.6f} segundos, gastando {memoria_atual_b:.2f} kb de memória, com pico de {memoria_pico_b:.2f} kb")
-                writer.writerow([degrau, funcao.__name__, it+1, f"{tempo:.6f}", f"{memoria_atual_b:.2f}", f"{memoria_pico_b:.2f}"])
+                print(f"[{it+1}ª Iteração] {tempo:.6f} segundos, com pico de {memoria_pico_b:.2f} bytes")
+                writer.writerow([degrau, funcao.__name__, it+1, f"{tempo:.6f}", f"{memoria_pico_b:.2f}"])
             linha(char="-", tam=60)
             
